@@ -1,0 +1,210 @@
+//                           ,;;;;;;,
+//                                 ,;;;'""`;;\
+//                               ,;;;/  .'`',;\
+//                             ,;;;;/   |    \|_
+//                            /;;;;;    \    / .\
+//                          ,;;;;;;|     '.  \/_/
+//                         /;;;;;;;|       \
+//              _,.---._  /;;;;;;;;|        ;   _.---.,_
+//            .;;/      `.;;;;;;;;;|         ;'      \;;,
+//          .;;;/         `;;;;;;;;;.._    .'         \;;;.
+//         /;;;;|          _;-"`       `"-;_          |;;;;\
+//        |;;;;;|.---.   .'  __.-"```"-.__  '.   .---.|;;;;;|
+//        |;;;;;|     `\/  .'/__\     /__\'.  \/`     |;;;;;|
+//        |;;;;;|       |_/ //  \   //  \ \_|       |;;;;;|
+//        |;;;;;|       |/ |/    || ||    \| \|       |;;;;;|
+//         \;;;;|    __ || _  .-.\| |/.-.  _ || __    |;;;;/
+//          \jgs|   / _\|/ = /_o_\   /_o_\ = \|/_ \   |;;;/
+//           \;;/   |`.-     `   `   `   `     -.`|   \;;/
+//          _|;'    \ |    _     _   _     _    | /    ';|_
+//         / .\      \_  ( '--'(     )'--' )  _//      /. \
+//         \/_/       \_/|  /_   |   |   _\  |\_/       \_\/
+//                       | /|\  \   /  //|\ |
+//                       |  | \'._'-'_.'/ |  |
+//                       |  ;  '-.```.-'  ;  |
+//                       |   \    ```    /   |
+//     __                ;    '.-"""""-.'    ;                __
+//    /\ \_         __..--\     `-----'     /--..__         _/ /\
+//    \_'/\`''---''`..;;;;.'.__,       ,__.',;;;;..`''---''`/\'_/
+//         '-.__'';;;;;;;;;;;,,'._   _.',,;;;;;;;;;;;''__.-'
+//              ``''--; ;;;;;;;;..`"`..;;;;;;;; ;--''``   _
+//         .-.       /,;;;;;;;';;;;;;;;;';;;;;;;,\    _.-' `\
+//       .'  /_     /,;;;;;;'/| ;;;;;;; |\';;;;;;,\  `\     '-'|
+//      /      )   /,;;;;;',' | ;;;;;;; | ',';;;;;,\   \   .'-./
+//      `'-..-'   /,;;;;','   | ;;;;;;; |   ',';;;;,\   `"`
+//               | ;;;','     | ;;;;;;; |  ,  ', ;;;'|
+//              _\__.-'  .-.  ; ;;;;;;; ;  |'-. '-.__/_
+//             / .\     (   )  \';;;;;'/   |   |    /. \
+//             \/_/   (`     `) \';;;'/    '-._|    \_\/
+//                     '-/ \-'   '._.'         `
+//                       """      /.`\
+//                                \|_/
+
+
+#include<bits/stdc++.h>
+#define pb push_back
+#define mk make_pair
+#define ll long long
+#define ss second
+#define ff first
+#define pll pair<ll,ll>
+#define vll vector<ll>
+#define mll map<ll,ll>
+#define mod 1000000007
+#define sp " "
+#define w(x) ll x; cin>>x; while(x--)
+#define ps(x,y) fixed<<setprecision(y)<<x;
+#define fo(i, j, k, in) for (ll i=j ; i<k ; i+=in)
+#define re(i, j) fo(i, 0, j, 1)
+#define pi 3.1415926535897932384626433832795
+#define all(cont) cont.begin(), cont.end()
+#define countbit(x) __builtin_popcount(x)
+#define mod 1000000007//998244353
+#define lo lower_bound
+#define de(n) ll n;cin>>n;
+#define def(a,n) ll n;cin>>n;ll a[n];re(i,n){cin>>a[i];}
+#define defi(a,n,k) ll n;cin>>n; ll k;cin>>k;ll a[n];re(i,n){cin>>a[i];}
+#define deb(x) cout<<#x<<"="<<x<<endl;
+#define tr(it,a) for(auto it=a.begin();it!=a.end();it++)
+#define nl cout<<endl;
+#define minato ios_base::sync_with_stdio(false), cin.tie(nullptr)
+#define mem1(a)           memset(a,-1,sizeof(a))
+#define mem0(a)           memset(a,0,sizeof(a))
+#define ppc               __builtin_popcount
+#define ppcll             __builtin_popcountll
+#define precision(x) cout << fixed << setprecision(x);
+#define gcd(a,b)    __gcd((a),(b))
+#define lcm(a,b)    ((a)*(b)) / gcd((a),(b))
+//#define endl "\n"
+const int dx[4]={1,0,0,-1}, dy[4]={0,1,-1,0};
+const int x_dir[]={-1,-1,-1,0,0,1,1,1};
+const int y_dir[]={-1,0,1,-1,1,-1,0,1};
+
+using namespace std;
+//KnightMareVoid
+
+
+ll med(vector<int> v){
+    ll c=0;
+    int n=v.size();
+    if(n==1)return 0;
+    if(n==2)return abs(v[0]-v[1]);
+    int m=(n-1)/2;
+    for(int i=0;i<n;i++){
+        c+=abs(v[m]-v[i]);
+    }
+    return c;
+
+}
+
+
+int solve(){
+    def(a,n);
+    sort(a,a+n);
+    if(n==2){
+        cout<<0<<endl;
+        return 0;
+    }
+    //  else if(n==3){
+    //      ll p=a[1]-a[0];
+    //      for(int i=0;i<2;i++){
+    //          p=min(p,a[i+1]-a[i]);
+    //      }
+    //      cout<<p<<endl;
+    //      return 0;
+    //  }
+    ll ans=LONG_LONG_MAX;
+ 
+
+   ll x=a[0];
+   ll y=a[n-1];
+   int l=1;
+   int r=n-2;
+   while(l<r){
+       if(a[l]+a[r]<x+y){
+           ans=min(abs(x+y-a[l]-a[r]),ans);
+           l++;
+       }
+       else if(a[l]+a[r]>x+y){
+           ans=min(abs(x+y-a[l]-a[r]),ans);
+           r--;
+
+
+       }
+       else{
+           ans=min(abs(x+y-a[l]-a[r]),ans);
+           break;
+       }
+   }
+   //cout<<ans<<endl;
+   int k1=0;
+   int k2=0;
+   for(int i=0;i<n;i++){
+       if(a[i]==a[0])k1++;
+       if(a[i]==a[n-1])k2++;
+   }
+    ll b[n];
+    ll c[n];
+    b[0]=0;
+    ll mina=a[0];
+    ll maxa=a[0];
+    for(int i=1;i<n;i++){
+        mina=min(a[i],mina);
+        maxa=max(a[i],maxa);
+        b[i]=maxa-mina;
+
+    }
+    c[n-1]=0;
+    mina =a[n-1];
+    maxa=a[n-1];
+    for(int i=n-2;i>=0;i--){
+        mina=min(a[i],mina);
+        maxa=max(a[i],maxa);
+        c[i]=maxa-mina;
+
+    }
+    for(int i=1;i<n-2;i++){
+        ll p1=b[i];
+        ll p2=c[i+1];
+        //cout<<p1<<sp<<p2<<endl;
+        // if(i<k1){
+        //     ans=min(ans,k2*abs(p2-p1));
+        //     continue;
+        // }
+        // if(n-i-1<k2){
+        //     ans=min(ans,k1*abs(p2-p1));
+
+        // }
+        ans=min(ans,abs(p2-p1));
+
+    }
+    vector<int> v1,v2;
+    for(int i=1;i<n;i++){
+        v1.pb(a[i]);
+    }
+    for(int i=0;i<n-1;i++){
+        v2.pb(a[i]);
+    }
+    ans=min({ans,med(v1),med(v2)});
+   cout<<ans<<endl;
+
+
+    return 0;
+
+}
+
+
+int main()
+{
+    minato;
+    int t;
+    cin>>t;
+    while(t--){
+        solve();
+        
+
+    }
+
+
+    return 0;
+}
