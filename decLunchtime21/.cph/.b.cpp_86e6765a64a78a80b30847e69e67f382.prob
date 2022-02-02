@@ -1,0 +1,1 @@
+{"name":"Local: b","url":"d:\\C++codes\\codechef\\decLunchtime21\\b.cpp","tests":[{"id":1640443434643,"input":"3\n7 3\nfaberty\n7 5\nbbaaaba\n4 4\nzxwy","output":"abferty\naababba\nwxyz"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++codes\\codechef\\decLunchtime21\\b.cpp","group":"local","local":true}
